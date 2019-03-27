@@ -1,0 +1,114 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'sans-serif';
+    background-color: #3B3F45;
+    color: white;
+}
+
+select {
+    border: 0;
+    padding: 4px;
+    font-weight: bold;
+    letter-spacing: .15em;
+    border-radius: 0;
+    min-width: 200px;
+  }
+
+.title {
+    border-bottom: 4px solid white;
+    margin: 0 auto;
+    width: 420px;
+    margin-top: 20px;
+    font-size: 20px;
+    padding: 5px;
+}
+.filterContent {
+    border-bottom: 1px solid white;
+    padding: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: 5px;
+    margin: 0 auto;
+    width: 420px;
+    overflow: auto;
+    font-size: 16px;
+}
+.filterGroup {
+    width: 100%;
+    display: block;
+    margin-bottom: 5px;
+    overflow: auto;
+}
+.filterField {
+    width: 50%;
+    float: left;
+}
+.filterGroup label {
+    margin-right: 5px;
+}
+.result {
+    background-color: white;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 20px;
+    color: black;
+    overflow: auto;
+    font-size: 14px;
+    width: 400px;
+}
+.resultGroup {
+    width: 100%;
+    float: left;
+    display: block;
+    margin-top: 5px;
+}
+.resultField {
+    width: 50%;
+    float: left;
+}
+.total {
+    margin-top: 5px;
+    border-top: 2px solid black;
+    padding-top: 10px;
+    font-weight: bold;
+}
+.left {
+    text-align: left;
+}
+.right {
+    text-align: right;
+}
+.addReduction {
+    width: 420px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.addReduction a {
+    color: white;
+    font-size: 12px;
+}
+.reduction {
+    width: 420px;
+    margin: 0 auto;
+    margin-top: 20px;
+    overflow: auto;
+}
+.reductionContent {
+    display: none;
+}
+.reduction a {
+    color: white;
+    font-size: 12px;
+}
+.reductionLink {
+    margin-bottom: 20px;
+}
+.reductionInput {
+    border: 0;
+    padding: 4px;
+    font-weight: bold;
+    letter-spacing: .15em;
+    border-radius: 0;
+    min-width: 200px;
+}

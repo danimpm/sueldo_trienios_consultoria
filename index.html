@@ -1,8 +1,131 @@
 <html>
 <head>
-  <title>Prueba</title>
+  <title>Sueldo Convenio Consultor&iacute;a</title>
+  <link rel="stylesheet" type="text/css" href="trienios_consultoria.css" />
+  <script src="trienios_consultoria.js"></script>
 </head>
 <body>
-  <h1>Esto es una prueba</h1>
+  <div id="title" class="title">
+      <span>Calcula tu salario</span>
+  </div>
+  <div id="filter-content" class="filterContent">
+    <div class="filterGroup">
+      <div class="filterField left">
+        <label>Categor&iacute;a:</label>
+      </div>
+      <div class="filterField right">
+        <select id="category" onchange="calculateSalary();">
+          <option value="n0">No seleccionada</option>
+          <option value="e3">E III</option>
+          <option value="e2">E II</option>
+          <option value="e1">E I</option>
+          <option value="d3">D III</option>
+          <option value="d2">D II</option>
+          <option value="d1">D I</option>
+          <option value="c3">C III</option>
+          <option value="c2">C II</option>
+          <option value="c1">C I</option>
+          <option value="b2">B II</option>
+          <option value="b1">B I</option>
+          <option value="a1">A I</option>
+        </select>
+      </div>
+    </div>
+    <div class="filterGroup">
+        <div class="filterField left">
+          <label>Trienios:</label>
+        </div>
+        <div class="filterField right">
+          <select id="three-year-period" onchange="calculateSalary();">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+          </select>
+        </div>
+      </div>
+  </div>
+  <div id="result" class="result">
+    <div class="resultGroup">
+        <div class="resultField left">
+          <label>Salario Base:</label>
+        </div>
+        <div class="resultField right">
+          <label id="result-base-salary"></label>
+        </div>
+    </div>
+    <div class="resultGroup">
+        <div class="resultField left">
+          <label>Plus Convenio:</label>
+        </div>
+        <div class="resultField right">
+          <label id="result-plus"></label>
+        </div>
+    </div>
+    <div class="resultGroup">
+        <div class="resultField left">
+          <label>Trienio:</label>
+        </div>
+        <div class="resultField right">
+          <label id="result-three-year-period"></label>
+        </div>
+    </div>
+    <div class="resultGroup">
+        <div class="resultField left">
+          <label>Total Trienios (x<span id="result-periods">0</span>):</label>
+        </div>
+        <div class="resultField right">
+          <label id="result-sum-periods"></label>
+        </div>
+    </div>
+    <div class="resultGroup total">
+      <div class="resultField left">
+        <label>Total:</label>
+      </div>
+      <div class="resultField right">
+        <label id="result-total"></label>
+      </div>
+    </div>
+  </div>
+  <div id="addReduction" class="addReduction">
+    <div class="resultGroup">
+      <div class="reductionLink right">
+        <a href="#" onclick="showReduction()">A&ntilde;adir Reducci&oacute;n de Jornada</a>
+      </div>
+    </div>
+  </div>
+  <div id="reduction" class="reductionContent">
+    <div class="reduction">
+      <div class="resultGroup">
+        <div class="reductionLink right">
+          <a href="#" onclick="hideReduction()">Quitar Reducci&oacute;n de Jornada</a>
+        </div>
+      </div>
+      <div class="resultGroup">
+        <div class="resultField left">
+          <label>Porcentaje:</label>
+        </div>
+        <div class="resultField right">
+          <input type="number" id="reductionPercentage" min="0" max="100" onchange="calculateReduction()" />
+        </div>
+      </div>
+    </div>
+    <div id="resultWithReduction" class="result">
+      <div class="resultGroup total">
+        <div class="resultField left">
+          <label>Total con reducci&oacute;n:</label>
+        </div>
+        <div class="resultField right">
+          <label id="result-with-reduction-total"></label>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
