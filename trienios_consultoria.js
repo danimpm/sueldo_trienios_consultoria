@@ -30,6 +30,7 @@ function calculateSalary() {
         document.getElementById("result-sum-periods").innerHTML=formatMoney(threeYearPeriods);
         totalWithPeriods = parseFloat(total) + parseFloat(threeYearPeriods);
         document.getElementById("result-total").innerHTML=formatMoney(totalWithPeriods);
+		calculateReduction();
     } else {
         document.getElementById("result-periods").innerHTML=periods;
         document.getElementById("result-base-salary").innerHTML='';
