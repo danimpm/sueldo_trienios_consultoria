@@ -52,6 +52,9 @@ function getPeriods() {
         if (yearInput.validity.valid == true && year != null && year != "") {
             var currentYear = new Date().getFullYear();
             periods = Math.trunc((currentYear - year) / 3);
+            if (periods > 9) {
+                periods = 9;
+            }
         }
     }
     return periods;
