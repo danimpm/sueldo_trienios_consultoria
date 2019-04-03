@@ -30,7 +30,7 @@ function calculateSalary() {
         document.getElementById("result-sum-periods").innerHTML=formatMoney(threeYearPeriods);
         totalWithPeriods = parseFloat(total) + parseFloat(threeYearPeriods);
         document.getElementById("result-total").innerHTML=formatMoney(totalWithPeriods);
-		calculateReduction();
+        calculateReduction();
     } else {
         document.getElementById("result-periods").innerHTML=periods;
         document.getElementById("result-base-salary").innerHTML='';
@@ -77,7 +77,12 @@ function hideReduction() {
 }
 
 function calculateReduction() {
-    var percentage = document.getElementById("reductionPercentage").value;
+    var percentageInput = document.getElementById("reductionPercentage");
+    if (percentageInput.validity.valid == false) {
+        percentage = 0;
+    } else {
+        percentage = percentageInput.value;
+    }
     var newTotal = totalWithPeriods - (percentage * 0.01 * totalWithPeriods);
     document.getElementById("result-with-reduction-total").innerHTML=formatMoney(newTotal);
 }
