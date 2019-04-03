@@ -83,16 +83,17 @@ select {
     width: 420px;
     margin: 0 auto;
     margin-top: 20px;
+    overflow: auto;
 }
 .addReduction a {
     color: white;
     font-size: 12px;
 }
 .reduction {
+    overflow: auto;
     width: 420px;
     margin: 0 auto;
     margin-top: 20px;
-    overflow: auto;
 }
 .reductionContent {
     display: none;
@@ -115,4 +116,23 @@ select {
 }
 .reductionInput:invalid {
     background-color: #ff9966;
+}
+.footer {
+    width: 420px;
+    margin: 0 auto;
+    margin-top: 20px;
+    overflow: auto;
+    border-top: 1px solid white;
+}
+.footerGroup {
+    width: 100%;
+    display: block;
+    margin-top: 10px;
+    overflow: auto;
+    padding-top: 5px;
+}
+.footerGroup a {
+    color: white;
+    font-size: 12px;
+    text-decoration: none;
 }
