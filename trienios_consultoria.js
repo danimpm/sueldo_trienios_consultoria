@@ -17,8 +17,7 @@ var totalWithPeriods = 0;
 
 function calculateSalary() {
     var salaryObj = getSalaryBySelectedCategory();
-    var elPeriods = document.getElementById("three-year-period");
-    var periods = elPeriods.options[elPeriods.selectedIndex].value;
+    var periods = getPeriods();
     if (null != salaryObj) {
         document.getElementById("result-periods").innerHTML=periods;
         document.getElementById("result-base-salary").innerHTML=formatMoney(salaryObj.base);
@@ -39,6 +38,23 @@ function calculateSalary() {
         document.getElementById("result-sum-periods").innerHTML='';
         document.getElementById("result-total").innerHTML='';
     }
+}
+
+function getPeriods() {
+    var periods = 0;
+    var selectedOptionVal = getSelectedOption();
+    if (selectedOptionVal == 'three-year-period-option') {
+        var elPeriods = document.getElementById("three-year-period");
+        periods = elPeriods.options[elPeriods.selectedIndex].value;
+    } else if (selectedOptionVal == 'initial-year-option') {
+        var yearInput = document.getElementById("initialYear");
+        var year = yearInput.value;
+        if (yearInput.validity.valid == true && year != null && year != "") {
+            var currentYear = new Date().getFullYear();
+            periods = Math.trunc((currentYear - year) / 3);
+        }
+    }
+    return periods;
 }
 
 function formatMoney(quantity) {
@@ -85,4 +101,29 @@ function calculateReduction() {
     }
     var newTotal = totalWithPeriods - (percentage * 0.01 * totalWithPeriods);
     document.getElementById("result-with-reduction-total").innerHTML=formatMoney(newTotal);
+}
+
+function changeSelectedOption() {
+    var selOption = getSelectedOption();
+    if (selOption == 'three-year-period-option') {
+        document.getElementById("initial-year-filter").style.display='none';
+        document.getElementById("three-year-period-filter").style.display='block';
+    } else if (selOption == 'initial-year-option') {
+        document.getElementById("three-year-period-filter").style.display='none';
+        document.getElementById("initial-year-filter").style.display='block';
+    }
+    calculateSalary();
+}
+
+function getSelectedOption() {
+    var selectedOptionVal;
+    var selectedOption = document.getElementsByName("selectedOption");
+    for (var i = 0, length = selectedOption.length; i < length; i++)
+    {
+        if (selectedOption[i].checked) {
+            selectedOptionVal = selectedOption[i].value;
+            break;
+        }
+    }
+    return selectedOptionVal;
 }

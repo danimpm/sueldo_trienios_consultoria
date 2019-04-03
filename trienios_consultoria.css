@@ -44,6 +44,11 @@ select {
     width: 50%;
     float: left;
 }
+.filterFieldRadio {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
 .filterGroup label {
     margin-right: 5px;
 }
@@ -115,6 +120,18 @@ select {
     text-align: right;
 }
 .reductionInput:invalid {
+    background-color: #ff9966;
+}
+.initialYearInput {
+    border: 0;
+    padding: 4px;
+    font-weight: bold;
+    letter-spacing: .15em;
+    border-radius: 0;
+    min-width: 200px;
+    text-align: right;
+}
+.initialYearInput:invalid {
     background-color: #ff9966;
 }
 .footer {

@@ -12,6 +12,16 @@
   </div>
   <div id="filter-content" class="filterContent">
     <div class="filterGroup">
+        <div class="filterFieldRadio">
+          <input type="radio" name="selectedOption" onchange="changeSelectedOption();"
+            value="three-year-period-option" id="three-year-period-option" checked>
+          <label for="three-year-period-option">Trienios</label>
+          <input type="radio" name="selectedOption" onchange="changeSelectedOption();"
+            value="initial-year-option" id="initial-year-option">
+          <label for="initial-year-option">Año Contrato</label>
+        </div>
+      </div>
+    <div class="filterGroup">
       <div class="filterField left">
         <label>Categor&iacute;a:</label>
       </div>
@@ -33,7 +43,7 @@
         </select>
       </div>
     </div>
-    <div class="filterGroup">
+    <div class="filterGroup" id="three-year-period-filter">
         <div class="filterField left">
           <label>Trienios:</label>
         </div>
@@ -50,6 +60,16 @@
             <option value="8">8</option>
             <option value="9">9</option>
           </select>
+        </div>
+      </div>
+      <div class="filterGroup" id="initial-year-filter" style="display:none;">
+        <div class="filterField left">
+          <label>A&ntilde;o de inicio (contrato):</label>
+        </div>
+        <div class="filterField right">
+            <input type="number" id="initialYear" class="initialYearInput" 
+              min="1970" max="2100" step="any"
+              onchange="calculateSalary()" />
         </div>
       </div>
   </div>
