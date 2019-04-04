@@ -1,167 +1,172 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=0.75">
+  <meta charset="UTF-8">
+  <meta name="Description" content="Calcular sueldo bruto en función de los trienios y las categorías del nuevo convenio de consultoría">
   <title>Sueldo Convenio Consultor&iacute;a</title>
   <link rel="icon" type="image/png" href="favicon.png" sizes="16x16">
   <link rel="stylesheet" type="text/css" href="trienios_consultoria.css" />
   <script src="trienios_consultoria.js"></script>
 </head>
 <body>
-  <div id="title" class="title">
+  <main>
+    <div id="title" class="title">
       <span>Calcula tu salario</span>
-  </div>
-  <div id="filter-content" class="filterContent">
-    <div class="filterGroup">
-        <div class="filterFieldRadio">
-          <input type="radio" name="selectedOption" onchange="changeSelectedOption();"
-            value="three-year-period-option" id="three-year-period-option" checked>
-          <label for="three-year-period-option">Trienios</label>
-          <input type="radio" name="selectedOption" onchange="changeSelectedOption();"
-            value="initial-year-option" id="initial-year-option">
-          <label for="initial-year-option">Año Contrato</label>
-        </div>
-      </div>
-    <div class="filterGroup">
-      <div class="filterField left">
-        <label>Categor&iacute;a:</label>
-      </div>
-      <div class="filterField right">
-        <select id="category" onchange="calculateSalary();">
-          <option value="n0">No seleccionada</option>
-          <option value="e3">E III</option>
-          <option value="e2">E II</option>
-          <option value="e1">E I</option>
-          <option value="d3">D III</option>
-          <option value="d2">D II</option>
-          <option value="d1">D I</option>
-          <option value="c3">C III</option>
-          <option value="c2">C II</option>
-          <option value="c1">C I</option>
-          <option value="b2">B II</option>
-          <option value="b1">B I</option>
-          <option value="a1">A I</option>
-        </select>
-      </div>
     </div>
-    <div class="filterGroup" id="three-year-period-filter">
+    <div id="filter-content" class="filterContent">
+      <div class="filterGroup">
+          <div class="filterFieldRadio">
+            <input type="radio" name="selectedOption" onchange="changeSelectedOption();"
+              value="three-year-period-option" id="three-year-period-option" checked>
+            <label for="three-year-period-option">Trienios</label>
+            <input type="radio" name="selectedOption" onchange="changeSelectedOption();"
+              value="initial-year-option" id="initial-year-option">
+            <label for="initial-year-option">Año Contrato</label>
+          </div>
+        </div>
+      <div class="filterGroup">
         <div class="filterField left">
-          <label>Trienios:</label>
+          <label for="category">Categor&iacute;a:</label>
         </div>
         <div class="filterField right">
-          <select id="three-year-period" onchange="calculateSalary();">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
+          <select id="category" onchange="calculateSalary();">
+            <option value="n0">No seleccionada</option>
+            <option value="e3">E III</option>
+            <option value="e2">E II</option>
+            <option value="e1">E I</option>
+            <option value="d3">D III</option>
+            <option value="d2">D II</option>
+            <option value="d1">D I</option>
+            <option value="c3">C III</option>
+            <option value="c2">C II</option>
+            <option value="c1">C I</option>
+            <option value="b2">B II</option>
+            <option value="b1">B I</option>
+            <option value="a1">A I</option>
           </select>
         </div>
       </div>
-      <div class="filterGroup" id="initial-year-filter" style="display:none;">
-        <div class="filterField left">
-          <label>A&ntilde;o de inicio (contrato):</label>
+      <div class="filterGroup" id="three-year-period-filter">
+          <div class="filterField left">
+            <label for="three-year-period">Trienios:</label>
+          </div>
+          <div class="filterField right">
+            <select id="three-year-period" onchange="calculateSalary();">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+            </select>
+          </div>
         </div>
-        <div class="filterField right">
-            <input type="number" id="initialYear" class="initialYearInput" 
-              min="1970" max="2100" step="any"
-              onchange="calculateSalary()" />
-        </div>
-      </div>
-  </div>
-  <div id="result" class="result">
-    <div class="resultGroup">
-        <div class="resultField left">
-          <label>Salario Base:</label>
-        </div>
-        <div class="resultField right">
-          <label id="result-base-salary"></label>
-        </div>
-    </div>
-    <div class="resultGroup">
-        <div class="resultField left">
-          <label>Plus Convenio:</label>
-        </div>
-        <div class="resultField right">
-          <label id="result-plus"></label>
-        </div>
-    </div>
-    <div class="resultGroup">
-        <div class="resultField left">
-          <label>Trienio:</label>
-        </div>
-        <div class="resultField right">
-          <label id="result-three-year-period"></label>
+        <div class="filterGroup" id="initial-year-filter" style="display:none;">
+          <div class="filterField left">
+            <label>A&ntilde;o de inicio (contrato):</label>
+          </div>
+          <div class="filterField right">
+              <input type="number" id="initialYear" class="initialYearInput" 
+                min="1970" max="2100" step="any"
+                onchange="calculateSalary()" />
+          </div>
         </div>
     </div>
-    <div class="resultGroup">
-        <div class="resultField left">
-          <label>Total Trienios (x<span id="result-periods">0</span>):</label>
-        </div>
-        <div class="resultField right">
-          <label id="result-sum-periods"></label>
-        </div>
-    </div>
-    <div class="resultGroup total">
-      <div class="resultField left">
-        <label>Total:</label>
-      </div>
-      <div class="resultField right">
-        <label id="result-total"></label>
-      </div>
-    </div>
-  </div>
-  <div id="addReduction" class="addReduction">
-    <div class="resultGroup">
-      <div class="reductionLink right">
-        <a href="#" onclick="showReduction()">A&ntilde;adir Reducci&oacute;n de Jornada</a>
-      </div>
-    </div>
-  </div>
-  <div id="reduction" class="reductionContent">
-    <div class="reduction">
+    <div id="result" class="result">
       <div class="resultGroup">
-        <div class="reductionLink right">
-          <a href="#" onclick="hideReduction()">Quitar Reducci&oacute;n de Jornada</a>
-        </div>
+          <div class="resultField left">
+            <label>Salario Base:</label>
+          </div>
+          <div class="resultField right">
+            <label id="result-base-salary"></label>
+          </div>
       </div>
       <div class="resultGroup">
-        <div class="resultField left">
-          <label>Porcentaje:</label>
-        </div>
-        <div class="resultField right">
-          <input type="number" id="reductionPercentage" class="reductionInput" min="0" max="100" step="any" onchange="calculateReduction()" />
-        </div>
+          <div class="resultField left">
+            <label>Plus Convenio:</label>
+          </div>
+          <div class="resultField right">
+            <label id="result-plus"></label>
+          </div>
       </div>
-    </div>
-    <div id="resultWithReduction" class="result">
+      <div class="resultGroup">
+          <div class="resultField left">
+            <label>Trienio:</label>
+          </div>
+          <div class="resultField right">
+            <label id="result-three-year-period"></label>
+          </div>
+      </div>
+      <div class="resultGroup">
+          <div class="resultField left">
+            <label>Total Trienios (x<span id="result-periods">0</span>):</label>
+          </div>
+          <div class="resultField right">
+            <label id="result-sum-periods"></label>
+          </div>
+      </div>
       <div class="resultGroup total">
         <div class="resultField left">
-          <label>Total con reducci&oacute;n:</label>
+          <label>Total:</label>
         </div>
         <div class="resultField right">
-          <label id="result-with-reduction-total"></label>
+          <label id="result-total"></label>
         </div>
       </div>
     </div>
-  </div>
-  <div class="externalUtils">
-    <div class="externalUtilsGroup">
-      <div class="left">
-        <span class="icon" title="Este enlace redirige a una web externa que no tiene que ver con esta herramienta ni sus autores y no se garantiza su fiabilidad">&#x24d8;</span><a target="_blank" href="https://www.calculadoraconversor.com/calculadora-sueldo-neto/">Calcular sueldo neto</a>
+    <div id="addReduction" class="addReduction">
+      <div class="resultGroup">
+        <div class="reductionLink right">
+          <a href="#" onclick="showReduction()">A&ntilde;adir Reducci&oacute;n de Jornada</a>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="footer">
-    <div class="footerGroup">
-      <div class="right">
-        <a target="_blank" href="https://github.com/danimpm/sueldo_trienios_consultoria">Código en <b>GitHub</b></a>
+    <div id="reduction" class="reductionContent">
+      <div class="reduction">
+        <div class="resultGroup">
+          <div class="reductionLink right">
+            <a href="#" onclick="hideReduction()">Quitar Reducci&oacute;n de Jornada</a>
+          </div>
+        </div>
+        <div class="resultGroup">
+          <div class="resultField left">
+            <label>Porcentaje:</label>
+          </div>
+          <div class="resultField right">
+            <input type="number" id="reductionPercentage" class="reductionInput" min="0" max="100" step="any" onchange="calculateReduction()" />
+          </div>
+        </div>
+      </div>
+      <div id="resultWithReduction" class="result">
+        <div class="resultGroup total">
+          <div class="resultField left">
+            <label>Total con reducci&oacute;n:</label>
+          </div>
+          <div class="resultField right">
+            <label id="result-with-reduction-total"></label>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+    <div class="externalUtils">
+      <div class="externalUtilsGroup">
+        <div class="left">
+          <span class="icon" title="Este enlace redirige a una web externa que no tiene que ver con esta herramienta ni sus autores y no se garantiza su fiabilidad">&#x24d8;</span><a target="_blank" rel="noopener" href="https://www.calculadoraconversor.com/calculadora-sueldo-neto/">Calcular sueldo neto</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footerGroup">
+        <div class="right">
+          <a target="_blank" rel="noopener" href="https://github.com/danimpm/sueldo_trienios_consultoria">Código en <b>GitHub</b></a>
+        </div>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
