@@ -134,6 +134,44 @@ select {
 .initialYearInput:invalid {
     background-color: #ff9966;
 }
+.externalUtils {
+    width: 420px;
+    margin: 0 auto;
+    margin-top: 5px;
+    overflow: auto;
+}
+.externalUtilsGroup {
+    width: 100%;
+    display: block;
+    margin-top: 5px;
+    overflow: auto;
+    padding-top: 5px;
+}
+.externalUtilsGroup a {
+    color: white;
+    font-size: 14px;
+    display: block;
+    font-family: arial;
+    float: left;
+    padding-top: 7px;
+}
+.icon {
+    font-size: 26px;
+    margin-right: 8px;
+    display: block;
+    float: left;
+    font-family: arial;
+}
+.icon:active:after {
+   content: attr(title);
+   padding: 5px;
+   border: 1px solid #ccc;
+   top: 5px;
+   right: 10%;
+   background: #bada55;
+   font-size: 12px;
+   display: block;
+}
 .footer {
     width: 420px;
     margin: 0 auto;
