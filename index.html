@@ -8,7 +8,9 @@
   <link rel="icon" type="image/png" href="favicon.png" sizes="16x16">
   <link rel="stylesheet" type="text/css" href="trienios_consultoria.css" />
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.0/chartist.min.css">
   <script src="trienios_consultoria.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.0/chartist.min.js"></script>
 </head>
 <body>
   <main>
@@ -119,7 +121,16 @@
           <label id="result-total"></label>
         </div>
       </div>
+      <div id="showEvolution" class="showEvolution">
+        <a id="showEvolutionLink" href="#" onclick="calcEvolution()">Mostrar gr&aacute;fica de siguientes trienios</a>
+		<a id="hideEvolutionLink" style="display:none;" href="#" onclick="hideEvolution()">Ocultar gr&aacute;fica</a>
+      </div>
     </div>
+	<div id="salaryEvolutionTitle" class="salaryEvolutionTitle" style="display:none;">
+		<label>Evoluci&oacute;n de los siguientes trienios</label>
+	</div>
+	<div id="salaryEvolution" class="salaryEvolution">
+	</div>
     <div id="addReduction" class="addReduction">
       <div class="resultGroup">
         <div class="reductionLink right">

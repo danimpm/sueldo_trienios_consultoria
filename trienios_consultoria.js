@@ -13,6 +13,20 @@ var salaries = [
 {'id':'a1','base':25035.54,'plus':1754.77}
 ];
 
+var chartOptions = {
+  width: 400,
+  height: 250,
+  chartPadding: {
+    top: 40
+  },
+  axisY: {
+    offset: 100,
+    labelInterpolationFnc: function(value) {
+      return formatMoney(value);
+    }
+  }
+};
+
 var totalWithPeriods = 0;
 
 function calculateSalary() {
@@ -22,7 +36,7 @@ function calculateSalary() {
         document.getElementById("result-periods").innerHTML=periods;
         document.getElementById("result-base-salary").innerHTML=formatMoney(salaryObj.base);
         document.getElementById("result-plus").innerHTML=formatMoney(salaryObj.plus);
-        var threeYearPeriod = parseFloat(salaryObj.base) * 0.05;
+        var threeYearPeriod = calcOnePeriod(salaryObj.base);
         document.getElementById("result-three-year-period").innerHTML=formatMoney(threeYearPeriod);
         var total = parseFloat(salaryObj.base) + parseFloat(salaryObj.plus);
         var threeYearPeriods = calculateThreeYearPeriod(salaryObj.base, periods);
@@ -30,6 +44,9 @@ function calculateSalary() {
         totalWithPeriods = parseFloat(total) + parseFloat(threeYearPeriods);
         document.getElementById("result-total").innerHTML=formatMoney(totalWithPeriods);
         calculateReduction();
+        if (document.getElementById("salaryEvolutionTitle").style.display == "block") {
+            calcEvolution();
+        }
     } else {
         document.getElementById("result-periods").innerHTML=periods;
         document.getElementById("result-base-salary").innerHTML='';
@@ -38,6 +55,10 @@ function calculateSalary() {
         document.getElementById("result-sum-periods").innerHTML='';
         document.getElementById("result-total").innerHTML='';
     }
+}
+
+function calcOnePeriod(base) {
+    return parseFloat(base) * 0.05;
 }
 
 function getPeriods() {
@@ -129,4 +150,35 @@ function getSelectedOption() {
         }
     }
     return selectedOptionVal;
+}
+
+function calcEvolution() {
+	var salaryObj = getSalaryBySelectedCategory();
+    var periods = getPeriods();
+    if (null != salaryObj && null != periods && periods < 9) {
+		var data = { labels: [], series: [] };
+		internalSerie = [];
+        for (var i = periods; i < 10; i++) {
+            var total = parseFloat(salaryObj.base) + parseFloat(salaryObj.plus);
+            var threeYearPeriods = calculateThreeYearPeriod(salaryObj.base, i);
+            var totalWPeriods = parseFloat(total) + parseFloat(threeYearPeriods);
+            data.labels.push(i);
+			internalSerie.push(totalWPeriods);
+        }
+        data.series.push(internalSerie);
+        new Chartist.Line('.salaryEvolution', data, chartOptions);
+        document.getElementById("showEvolutionLink").style.display='none';
+        document.getElementById("hideEvolutionLink").style.display='block';
+        document.getElementById("salaryEvolutionTitle").style.display='block';
+		document.getElementById("salaryEvolution").style.display='block';
+    } else {
+        hideEvolution();
+    }
+}
+
+function hideEvolution() {
+    document.getElementById("showEvolutionLink").style.display='block';
+    document.getElementById("hideEvolutionLink").style.display='none';
+    document.getElementById("salaryEvolutionTitle").style.display='none';
+    document.getElementById("salaryEvolution").style.display='none';
 }
